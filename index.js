@@ -1,32 +1,33 @@
-const driver = {};
-
-function updateDriverWithKeyAndValue(driver, address, value ) {  
-  // Alternate using ES6 Spread operators:
-  // return { ...driver, ...{ [key]: value } }
-  return Object.assign({}, driver, { address: "11 Broadway" });
+const  employee = {
+  name: 'Andrew',
+  streetAddress: '161 Mcadam St',
 }
+
+function updateDriverWithKeyAndValue(employee) {  
+  const employee2 = {
+    ...employee,
+    name: "Sam",
+    streetAddress: "11 Broadway"
+  };
+  return employee2;
+};
  
-
-function destructivelyUpdateDriverWithKeyAndValue(driver, address, value ) {
+function destructivelyUpdateDriverWithKeyAndValue(employee) {
   
-  driver [address] = '12 Broadway';
+ employee.name = "Sam",
+employee.streetAddress = "12 Broadway";
 
-  return driver;
+  return employee;
 }
 
-
-function deleteFromDriverByKey(driver, key) {
-  // Alternate using ES6 Spread operators:
-  // const newObj = { ...driver }
-  const newObj = Object.assign({}, driver);
-
-  delete newObj[key];
-
-  return newObj;
+function deleteFromDriverByKey(employee, key) {
+    let newObj = {...employee};
+    delete newObj[key]; 
+    return newObj;
 }
 
-function destructivelyDeleteFromDriverByKey(driver, key) {
-  delete driver[key];
+function destructivelyDeleteFromDriverByKey(employee) {
+  delete employee.name;
 
-  return driver;
+  return employee;
 }
